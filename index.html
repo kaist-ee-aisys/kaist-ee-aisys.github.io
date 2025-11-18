@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>System for AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #0c4da2;
+      --secondary: #0a6cf1;
+      --text: #1c2b36;
+      --muted: #5b6c7a;
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --border: #e3e9ef;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 15px;
+    }
+
+    .hero {
+      position: relative;
+      background: linear-gradient(120deg, #0c4da2 0%, #2f7ded 45%, #7db4ff 100%);
+      color: #fff;
+      padding: 120px 20px 100px;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://computer.kaist.ac.kr/_res/computer/img/main/m_bg02.png') center/cover no-repeat;
+      opacity: 0.15;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 4vw, 48px);
+      margin: 0 0 16px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin: 0 0 24px;
+      max-width: 540px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 70px 20px;
+    }
+
+    .section h2 {
+      font-size: 30px;
+      margin: 0 0 12px;
+      letter-spacing: -0.3px;
+    }
+
+    .section p.lead {
+      color: var(--muted);
+      margin: 0 0 32px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 22px;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 16px 32px rgba(12, 77, 162, 0.08);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(12, 77, 162, 0.12);
+    }
+
+    .professor img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, #dfe8f2, #e7eef7);
+    }
+
+    .professor h3 {
+      margin: 14px 0 6px;
+      font-size: 20px;
+    }
+
+    .professor p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .tag {
+      padding: 6px 10px;
+      background: #eef4ff;
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 12px;
+      border-radius: 8px;
+      border: 1px solid #d5e4ff;
+    }
+
+    .pill-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .icon-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #eef4ff;
+      display: grid;
+      place-items: center;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    footer {
+      background: #0f1b2d;
+      color: #dbe6ff;
+      padding: 26px 20px;
+      margin-top: 30px;
+    }
+
+    footer .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div>System for AI</div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#professors">Professors</a>
+        <a href="#research">Research</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <div>
+          <div class="badge">Systems meet Intelligence</div>
+          <h1>System for AI</h1>
+          <p>We advance reliable, high-performance computing systems that propel the next generation of artificial intelligence — from data centers to edge devices and everywhere intelligent workloads demand trustworthy scale.</p>
+        </div>
+        <div class="card">
+          <div class="pill-card">
+            <div class="icon-circle">∞</div>
+            <div>
+              <strong>System for AI @ KAIST</strong>
+              <p style="margin:4px 0 0; color: var(--muted);">Building dependable platforms where algorithms flourish.</p>
+            </div>
+          </div>
+          <div class="tags">
+            <span class="tag">Cloud & Edge</span>
+            <span class="tag">AI Acceleration</span>
+            <span class="tag">Reliability</span>
+            <span class="tag">Performance</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <h2>About the Initiative</h2>
+      <p class="lead">System for AI at KAIST brings together experts in computer architecture, operating systems, and large-scale platforms to engineer infrastructure that makes intelligent applications robust and efficient.</p>
+      <div class="grid grid-3">
+        <div class="card pill-card">
+          <div class="icon-circle">1</div>
+          <div>
+            <h3>Platform Innovation</h3>
+            <p>Designing scalable cloud, edge, and datacenter systems tuned for AI workloads.</p>
+          </div>
+        </div>
+        <div class="card pill-card">
+          <div class="icon-circle">2</div>
+          <div>
+            <h3>Accelerated Intelligence</h3>
+            <p>Co-optimizing software stacks with emerging accelerators for trustworthy speed.</p>
+          </div>
+        </div>
+        <div class="card pill-card">
+          <div class="icon-circle">3</div>
+          <div>
+            <h3>Responsible Reliability</h3>
+            <p>Ensuring fairness, security, and resilience for AI services in production.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="professors" class="section">
+      <h2>Faculty</h2>
+      <p class="lead">Meet the professors leading System for AI research and education.</p>
+      <div class="grid grid-3">
+        <a class="card professor" href="http://ina.kaist.ac.kr" target="_blank" rel="noreferrer">
+          <img src="assets/professor.png" alt="Portrait placeholder for Dongsu Han" loading="lazy" />
+          <h3>Dongsu Han</h3>
+          <p>Networking systems, dependable cloud services, and trustworthy AI platforms.</p>
+        </a>
+        <a class="card professor" href="https://casyslab.kaist.ac.kr" target="_blank" rel="noreferrer">
+          <img src="assets/professor.png" alt="Portrait placeholder for Youngjin Kwon" loading="lazy" />
+          <h3>Youngjin Kwon</h3>
+          <p>Systems for AI reliability, cloud efficiency, and high-performance runtimes.</p>
+        </a>
+        <a class="card professor" href="http://ina.kaist.ac.kr" target="_blank" rel="noreferrer">
+          <img src="assets/professor.png" alt="Portrait placeholder for Songje Park" loading="lazy" />
+          <h3>Songje Park</h3>
+          <p>Trustworthy networking and resilient infrastructure for intelligent services.</p>
+        </a>
+        <a class="card professor" href="https://sites.google.com/view/kaist-via" target="_blank" rel="noreferrer">
+          <img src="assets/professor.png" alt="Portrait placeholder for Minsoo Rhu" loading="lazy" />
+          <h3>Minsoo Rhu</h3>
+          <p>AI acceleration, GPU/ASIC co-design, and scalable model deployment.</p>
+        </a>
+        <a class="card professor" href="https://casyslab.kaist.ac.kr" target="_blank" rel="noreferrer">
+          <img src="assets/professor.png" alt="Portrait placeholder for Jaehyuk Huh" loading="lazy" />
+          <h3>Jaehyuk Huh</h3>
+          <p>Computer architecture, memory systems, and efficient AI computing.</p>
+        </a>
+      </div>
+    </section>
+
+    <section id="research" class="section">
+      <h2>Research Highlights</h2>
+      <p class="lead">System for AI research spans the full stack, mirroring the breadth of KAIST's Computer Science faculty.</p>
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>Cloud-Scale Infrastructure</h3>
+          <p>Resource orchestration, disaggregated architectures, and reliable services for massive AI training and serving.</p>
+          <div class="tags">
+            <span class="tag">Datacenter</span>
+            <span class="tag">Scheduling</span>
+            <span class="tag">Reliability</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Edge Intelligence</h3>
+          <p>Lightweight runtimes, federated orchestration, and secure updates that bring AI closer to users.</p>
+          <div class="tags">
+            <span class="tag">Edge</span>
+            <span class="tag">Federated</span>
+            <span class="tag">Security</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Accelerator-Aware Systems</h3>
+          <p>Software stacks that co-design schedulers, compilers, and memory managers with GPUs and custom silicon.</p>
+          <div class="tags">
+            <span class="tag">GPU</span>
+            <span class="tag">Compiler</span>
+            <span class="tag">Performance</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <div class="inner">
+      <div>
+        <strong>System for AI</strong><br />
+        College of Computing, KAIST
+      </div>
+      <div>Inspired by the KAIST School of Computing website design.</div>
+    </div>
+  </footer>
+  <script>
+    const professorPlaceholder =
+      'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" role="img" aria-label="Professor portrait placeholder"%3E%3Cdefs%3E%3ClinearGradient id="g" x1="0" y1="0" x2="1" y2="1"%3E%3Cstop offset="0%25" stop-color="%23dfe8f2"/%3E%3Cstop offset="100%25" stop-color="%23eef4ff"/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width="600" height="360" fill="url(%23g)"/%3E%3Ccircle cx="300" cy="150" r="70" fill="%2396afd8" opacity="0.45"/%3E%3Crect x="190" y="240" width="220" height="28" rx="14" fill="%2396afd8" opacity="0.45"/%3E%3Ctext x="300" y="320" text-anchor="middle" fill="%235b6c7a" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600"%3EAdd professor.png locally%3C/text%3E%3C/svg%3E';
+
+    document.querySelectorAll('.professor img').forEach((img) => {
+      img.addEventListener('error', () => {
+        img.src = professorPlaceholder;
+      });
+    });
+  </script>
+</body>
+</html>
