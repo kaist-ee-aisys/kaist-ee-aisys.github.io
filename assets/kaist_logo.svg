@@ -1,0 +1,11 @@
+<svg width="1120" height="120" viewBox="0 0 1120 120" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="KAIST logo">
+  <rect width="1120" height="120" fill="#17468F"/>
+  <g fill="#FFFFFF">
+    <path d="M98 90V30h20v24l24-24h25L136 64l34 26h-27L117 69l-0.5 0.5V90H98z"/>
+    <path d="M210 30h20l30 60h-21l-5.2-12H206l-5.2 12H180l30-60zm10 34-8-19-8 19h16z"/>
+    <path d="M278 90V30h20v60h-20z"/>
+    <path d="M332 90V46h-22V30h64v16h-22v44h-20z"/>
+    <path d="M396 82l12-12c7 6 14 9 22 9 7 0 11-3 11-7 0-5-4-6-15-9-16-4-27-8-27-23 0-13 11-22 28-22 11 0 20 3 28 9l-10 13c-6-4-12-7-18-7s-10 3-10 7c0 5 4 6 16 9 15 4 26 9 26 23 0 14-11 23-29 23-12 0-24-4-34-13z"/>
+    <rect x="1080" y="18" width="22" height="22" fill="#FFFFFF"/>
+  </g>
+</svg>
